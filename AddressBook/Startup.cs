@@ -1,4 +1,5 @@
 using AddressBook.Models;
+using AddressBook.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -25,6 +26,7 @@ namespace AddressBook {
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services) {
 
+			services.AddScoped<IAddressRepository, AddressRepository>();
 			services.AddDbContext<AddressContext>(o => o.UseSqlite("Data source=addresses.db"));
 			services.AddControllers();
 			services.AddSwaggerGen(c => {
