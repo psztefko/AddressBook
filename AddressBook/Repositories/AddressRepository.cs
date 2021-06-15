@@ -22,14 +22,21 @@ namespace AddressBook.Repositories {
 			return address;
 		}
 
-		public async Task<IEnumerable<Address>> Get() {
+		public async Task<Address> Get() {
 
-			return await _context.Addresses.ToListAsync();
+			var addressesList = await _context.Addresses.ToListAsync();
+
+			Address recentAddress = null;
+			if (addressesList.Count > 0) {
+				recentAddress = addressesList[^1];
+			}
+
+			return recentAddress;
 		}
 
-		public async Task<Address> Get(string city) {
-
-			return await _context.Addresses.FindAsync(city);
+		public async Task<IEnumerable<Address>> Get(string city) {
+			var addressList = await _context.Addresses.ToListAsync();
+			return addressList.Where(address => address.City == city);
 		}
 
 	}

@@ -7,11 +7,10 @@ using System.Threading.Tasks;
 namespace AddressBook.Repositories {
 	public interface IAddressRepository {
 
-		Task<IEnumerable<Address>> Get();
+		Task<Address> Get();
 
-		Task<Address> Get(string city);
+		Task<IEnumerable<Address>> Get(string city);
 
 		Task<Address> Create(Address address);
-
 	}
 }
