@@ -9,12 +9,9 @@ namespace AddressBook.Repositories {
 
 		Task<IEnumerable<Address>> Get();
 
-		Task<Address> Get(int id);
+		Task<Address> Get(string city);
 
 		Task<Address> Create(Address address);
 
-		Task Update(Address address);
-
-		Task Delete(int id);
 	}
 }

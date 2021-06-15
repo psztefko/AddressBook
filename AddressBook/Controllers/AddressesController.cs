@@ -24,9 +24,9 @@ namespace AddressBook.Controllers {
 			return await _addressRepository.Get();
 		}
 
-		[HttpGet("{id}")]
-		public async Task<ActionResult<Address>> GetAddresses(int id) {
-			return await _addressRepository.Get(id);
+		[HttpGet("{city}")]
+		public async Task<ActionResult<Address>> GetAddresses(string city) {
+			return await _addressRepository.Get(city);
 		}
 
 		[HttpPost]

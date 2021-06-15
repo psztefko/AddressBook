@@ -22,27 +22,15 @@ namespace AddressBook.Repositories {
 			return address;
 		}
 
-		public async Task Delete(int id) {
-
-			var addressToDelete = await _context.Addresses.FindAsync(id);
-			_context.Addresses.Remove(addressToDelete);
-			await _context.SaveChangesAsync();
-		}
-
 		public async Task<IEnumerable<Address>> Get() {
 
 			return await _context.Addresses.ToListAsync();
 		}
 
-		public async Task<Address> Get(int id) {
+		public async Task<Address> Get(string city) {
 
-			return await _context.Addresses.FindAsync(id);
+			return await _context.Addresses.FindAsync(city);
 		}
 
-		public async Task Update(Address address) {
-
-			_context.Entry(address).State = EntityState.Modified;
-			await _context.SaveChangesAsync();
-		}
 	}
 }
